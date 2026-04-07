@@ -35,10 +35,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"}`}>
       <div className="max-w-screen-2xl mx-auto px-6 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center group-hover:bg-secondary transition-colors duration-500">
-            <Microscope className="w-6 h-6 text-white" />
-          </div>
-          <span className="text-xl font-extrabold text-primary tracking-tight font-headline">ZOIC BIOTECH</span>
+          <img src="logo.png" className="w-35 h-auto" />
         </Link>
 
         {/* Desktop Nav */}
@@ -188,7 +185,7 @@ const StatsBar = () => {
   ];
 
   return (
-    <section id="compliance" className="bg-primary py-16 relative overflow-hidden">
+    <section className="bg-primary py-16 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -673,7 +670,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <div className="max-w-screen-2xl mx-auto px-6 mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div id="compliance" className="max-w-screen-2xl mx-auto px-6 mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-[10px] text-white/30 uppercase tracking-[0.2em]">© 2026 Zoic Biotech Pvt. Ltd. All rights reserved.</p>
         <div className="flex gap-8 text-[10px] text-white/30 uppercase tracking-[0.2em]">
           <a className="hover:text-white transition-colors" href="https://www.zoicbiotech.com/privacy-policy">Privacy Policy</a>
