@@ -113,26 +113,37 @@ const Hero = () => {
             <ShieldCheck className="w-4 h-4" />
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase">WHO-GMP & ISO Certified | Manufacturing Since 1990</span>
           </div>
-          <h1 className="font-headline text-5xl md:text-7xl font-extrabold text-on-surface tracking-tight leading-[1.05] mb-8">
-            Precision <span className="text-primary italic">Manufacturing</span>.<br />
-            Scalable <span className="text-secondary">Growth</span>.
+          <h1 className="font-headline text-5xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-[1.05] mb-8">
+            Start Your <span className="text-primary italic">PCD Pharma Franchise</span>.<br />
+            with Nutraceutical & <span className="text-secondary">Cosmetic Range</span>.
           </h1>
           <p className="text-xl text-on-surface-variant max-w-2xl mb-12 leading-relaxed font-light">
-            India’s trusted manufacturing partner for PCD Pharma Franchise, Third-Party Manufacturing, and Private Label solutions across pharmaceuticals, nutraceuticals, and cosmetic formulations.
-            Backed by 36+ years of expertise, 1000+ B2B collaborations, and a proven track record in delivering high-quality, compliant, and scalable production.
+            Partner with Zoic Biotech for PCD Pharma Franchise, Nutraceutical PCD Pharma Franchise, and Cosmetic PCD Pharma Franchise opportunities with monopoly rights, quality products, promotional support, and attractive business margins.
           </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            {[
+              "500+ GMP-WHO Approved Products",
+              "Exclusive Monopoly Rights",
+              "Fast Delivery Across India",
+              "Attractive Promotional Support",
+              "DCGI Approved Molecules"
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-3 bg-white/70 backdrop-blur-sm px-4 py-3 rounded-xl border border-primary/10"
+              >
+                <CheckCircle className="w-5 h-5 text-primary" />
+                <span className="text-sm font-semibold text-on-surface">{item}</span>
+              </div>
+            ))}
+          </div>
           <div className="flex flex-wrap gap-5">
             <a
               href="#quote"
               className="bg-primary text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-secondary transition-all shadow-xl hover:-translate-y-1"
             >
               Get your Quote
-            </a>
-            <a
-              href="https://zoicbiotech.com/products" target="_blank"
-              className="bg-white text-on-surface border border-outline-variant/30 px-10 py-5 rounded-full font-bold text-lg hover:bg-surface-container-low transition-all"
-            >
-              Browse Portfolio
             </a>
           </div>
         </motion.div>
@@ -214,6 +225,37 @@ const StatsBar = () => {
   );
 };
 
+const FranchiseSection = () => {
+  return (
+    <section className="py-28 bg-white">
+      <div className="max-w-screen-2xl mx-auto px-6">
+
+        <div className="max-w-5xl mx-auto text-center">
+          <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">
+            PCD Pharma Franchise
+          </span>
+
+          <h2 className="text-4xl md:text-5xl font-extrabold text-on-surface mb-8 leading-tight">
+            Zoic Biotech - India’s Leading Cosmetic & Nutraceutical PCD Pharma Franchise
+          </h2>
+
+          <p className="text-lg text-on-surface-variant leading-relaxed font-light">
+            Zoic Biotech offers profitable business opportunities in PCD Pharma Franchise,
+            Nutraceutical PCD Pharma Franchise, and Cosmetic PCD Pharma Franchise across India.
+            Our product portfolio includes pharmaceutical formulations, wellness supplements,
+            nutraceutical products, herbal products, skincare, personal care, and cosmetic products.
+
+            With monopoly rights, promotional support, timely delivery, and quality-focused manufacturing,
+            Zoic Biotech helps pharma distributors, medical representatives, wholesalers,
+            and entrepreneurs grow their own franchise business.
+          </p>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
 const ManufacturingCapabilities = () => {
   const capabilities = [
     {
@@ -259,16 +301,9 @@ const ManufacturingCapabilities = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="max-w-2xl">
             <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Manufacturing Excellence</span>
-            <h2 className="font-headline text-5xl font-extrabold text-on-surface leading-tight">Diversified Manufacturing Capabilities</h2>
+            <h2 className="font-headline text-4xl font-extrabold text-on-surface leading-tight">Wide Range of Pharma Products for PCD Pharma Franchise</h2>
           </div>
           <div className="h-px flex-grow bg-outline-variant/30 hidden md:block mx-12 mb-6"></div>
-          <a
-            href="https://zoicbiotech.com/products" target="_blank"
-            className="inline-flex items-center gap-3 font-bold text-primary hover:text-secondary transition-colors group underline decoration-2 underline-offset-8"
-          >
-            View Product Catalog
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
-          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -317,6 +352,99 @@ const ManufacturingCapabilities = () => {
             </a>
           </motion.div>
         </div>
+      </div>
+    </section>
+  );
+};
+
+const WhyChooseZoic = () => {
+  const points = [
+    "WHO-GMP Certified",
+    "ISO Certified Company",
+    "Monopoly Rights Available",
+    "500+ Pharma Products",
+    "Fast Delivery Network",
+    "High Profit Margins"
+  ];
+
+  return (
+    <section className="py-28 bg-surface-container-low">
+      <div className="max-w-screen-xl mx-auto px-6">
+
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-8">
+            Why Pharma Professionals Choose Zoic Biotech
+          </h2>
+
+          <p className="text-lg text-on-surface-variant leading-relaxed">
+            Zoic Biotech is a rapidly growing pharmaceutical company offering
+            high-quality Cosmetic & Nutraceutical PCD Pharma Franchise opportunities across India.
+            We provide WHO-GMP certified products, monopoly-based business opportunities,
+            and complete promotional support to help our franchise partners grow successfully.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {points.map((point, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-2xl p-6 shadow-sm border border-primary/10 flex items-center gap-4"
+            >
+              <CheckCircle className="text-primary w-6 h-6" />
+              <span className="font-semibold text-on-surface">{point}</span>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+const PharmaBusinessSection = () => {
+  return (
+    <section className="py-28 bg-primary text-white">
+      <div className="max-w-screen-xl mx-auto px-6 text-center">
+
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-10">
+          Start a Profitable Pharma Franchise Business
+        </h2>
+
+        <p className="text-lg text-white/80 leading-relaxed max-w-5xl mx-auto mb-14">
+          The Indian pharmaceutical market is witnessing strong growth due to rising healthcare awareness,
+          increasing medicine demand, and expanding rural healthcare access.
+
+          The PCD Pharma Franchise model has become one of the most profitable and low-risk business opportunities in India.
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-14">
+          {[
+            "Medical Representative",
+            "Distributor",
+            "Pharmacist",
+            "Doctor",
+            "Entrepreneur"
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="bg-white/10 px-6 py-4 rounded-full font-semibold"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+
+        <p className="text-white/80 text-lg mb-10">
+          Zoic Biotech provides everything you need to establish and grow your pharma business successfully.
+        </p>
+
+        <a
+          href="#quote"
+          className="inline-flex items-center justify-center bg-secondary px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition"
+        >
+          Get Product & Price List
+        </a>
+
       </div>
     </section>
   );
@@ -421,7 +549,7 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="py-24 bg-surface">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-20">Success Stories from Partners</h2>
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-20">Trusted by Pharma Professionals Across India</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           {testimonials.map((t, i) => (
             <motion.div
@@ -534,7 +662,7 @@ const ContactForm = () => {
                   <input
                     required
                     className="w-full bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
-                    placeholder="Johnathan Doe"
+                    placeholder="Name"
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -545,7 +673,7 @@ const ContactForm = () => {
                   <input
                     required
                     className="w-full bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
-                    placeholder="john@company.com"
+                    placeholder="example@company.com"
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -558,7 +686,7 @@ const ContactForm = () => {
                   <input
                     required
                     className="w-full bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
-                    placeholder="+91 00000 00000"
+                    placeholder="+91 99999 99999"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -610,6 +738,27 @@ const ContactForm = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const MobileStickyCTA = () => {
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden grid grid-cols-2 shadow-2xl">
+      <a
+        href="tel:+919815620908"
+        className="bg-primary text-white text-center py-4 font-bold"
+      >
+        Call Now
+      </a>
+
+      <a
+        href="https://wa.me/919815620908"
+        target="_blank"
+        className="bg-secondary text-white text-center py-4 font-bold"
+      >
+        WhatsApp
+      </a>
+    </div>
   );
 };
 
@@ -687,10 +836,14 @@ const LandingPage = () => {
       <Navbar />
       <Hero />
       <StatsBar />
+      <FranchiseSection />
       <ManufacturingCapabilities />
+      <WhyChooseZoic />
+      <PharmaBusinessSection />
       <Certifications />
       <Testimonials />
       <ContactForm />
+      <MobileStickyCTA />
       <Footer />
     </>
   );

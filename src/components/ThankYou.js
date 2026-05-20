@@ -5,27 +5,6 @@ import { CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function ThankYou() {
-  useEffect(() => {
-    const gtag_report_conversion = (url) => {
-      const callback = () => {
-        if (url) {
-          window.location = url;
-        }
-      };
-
-      if (window.gtag) {
-        window.gtag('event', 'conversion', {
-          send_to: 'AW-747198314/obWbCP7n25YcEOqupeQC',
-          event_callback: callback
-        });
-      }
-    };
-
-    // Fire conversion when page loads
-    gtag_report_conversion();
-
-  }, []);
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface px-6">
       <motion.div
