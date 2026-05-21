@@ -458,14 +458,7 @@ const FranchiseSection = () => {
           </h2>
 
           <p className="text-lg text-on-surface-variant leading-relaxed font-light">
-            Zoic Biotech offers profitable business opportunities in Third Party Manufacturing,
-            Nutraceutical Third Party Manufacturing, and Cosmetic Third Party Manufacturing across India.
-            Our product portfolio includes pharmaceutical formulations, wellness supplements,
-            nutraceutical products, herbal products, skincare, personal care, and cosmetic products.
-
-            With timely delivery, and quality-focused manufacturing,
-            Zoic Biotech helps pharma distributors, medical representatives, wholesalers,
-            and entrepreneurs grow their own business.
+            We specialize in Third Party Manufacturing services for Cosmetic & Nutraceutical products, offering high-quality, innovative, and customized solutions to meet diverse market demands. With state-of-the-art manufacturing facilities, advanced formulations, and strict quality control standards, we provide a wide range of products including skincare, haircare, personal care, health supplements, vitamins, protein powders, and herbal formulations. Our expert team ensures premium packaging, timely delivery, and compliance with industry regulations to help brands build a strong market presence. Whether you are a startup or an established business, we deliver reliable, cost-effective, and end-to-end manufacturing support tailored to your requirements.
           </p>
         </div>
 
