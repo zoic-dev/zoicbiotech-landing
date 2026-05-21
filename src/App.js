@@ -99,88 +99,306 @@ const Navbar = () => {
 };
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    category: "Pharmaceuticals (Tablets/Caps)",
+    details: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbyClIX6L9VlI4aLo7DvzzNdE5giALy7biut9NVbUeIhNN4TpJv78tIkZ3IxkC8y91IP/exec",
+        {
+          method: "POST",
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        navigate("/thank-you");
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Submission failed. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-surface-container-low -z-10 skew-x-[-12deg] translate-x-1/2"></div>
+    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+
+      {/* BACKGROUND */}
+      <div className="absolute top-0 right-0 w-[40%] h-full bg-surface-container-low -z-10 skew-x-[-12deg] translate-x-1/2"></div>
+
       <div className="max-w-screen-2xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+        {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="lg:col-span-7"
+          className="lg:col-span-6"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/5 text-primary rounded-full mb-8 border border-primary/10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 text-primary rounded-full mb-8 border border-primary/10">
             <ShieldCheck className="w-4 h-4" />
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase">WHO-GMP & ISO Certified | Manufacturing Since 1990</span>
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase">
+              WHO-GMP & ISO Certified | Manufacturing Since 1990
+            </span>
           </div>
-          <h1 className="font-headline text-5xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-[1.05] mb-8">
-            Start Your <span className="text-primary italic">PCD Pharma Franchise</span>.<br />
-            with Nutraceutical & <span className="text-secondary">Cosmetic Range</span>.
+
+          <h1 className="font-headline text-5xl md:text-6xl font-extrabold text-on-surface tracking-tight leading-[1.05] mb-8">
+            India's Leading{" "}
+            <span className="text-primary italic">
+              Nutraceutical &
+            </span>
+            <br />
+            Cosmetic{" "}
+            <span className="text-secondary">
+              Third Party Manufacturing
+            </span>
           </h1>
-          <p className="text-xl text-on-surface-variant max-w-2xl mb-12 leading-relaxed font-light">
-            Partner with Zoic Biotech for PCD Pharma Franchise, Nutraceutical PCD Pharma Franchise, and Cosmetic PCD Pharma Franchise opportunities with monopoly rights, quality products, promotional support, and attractive business margins.
+
+          <p className="text-lg text-on-surface-variant max-w-2xl mb-10 leading-relaxed font-light">
+            Partner with Zoic Biotech for premium Third Party Manufacturing solutions in Pharmaceuticals, Nutraceuticals, Ayurvedic, Derma and Cosmetic products.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
             {[
               "500+ GMP-WHO Approved Products",
-              "Exclusive Monopoly Rights",
               "Fast Delivery Across India",
               "Attractive Promotional Support",
-              "DCGI Approved Molecules"
+              "DCGI Approved Molecules",
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 bg-white/70 backdrop-blur-sm px-4 py-3 rounded-xl border border-primary/10"
+                className="flex items-center gap-3 bg-white px-4 py-4 rounded-2xl border border-primary/10 shadow-sm"
               >
                 <CheckCircle className="w-5 h-5 text-primary" />
-                <span className="text-sm font-semibold text-on-surface">{item}</span>
+
+                <span className="text-sm font-semibold text-on-surface">
+                  {item}
+                </span>
               </div>
             ))}
           </div>
-          <div className="flex flex-wrap gap-5">
-            <a
-              href="#quote"
-              className="bg-primary text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-secondary transition-all shadow-xl hover:-translate-y-1"
-            >
-              Get your Quote
-            </a>
+
+          <div className="flex flex-wrap gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
+                <FlaskConical className="w-7 h-7 text-primary" />
+              </div>
+
+              <div>
+                <p className="text-3xl font-black text-on-surface">
+                  3,000+
+                </p>
+
+                <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">
+                  Formulations Developed
+                </p>
+              </div>
+            </div>
           </div>
         </motion.div>
 
+        {/* RIGHT FORM */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="lg:col-span-5 relative"
+          className="lg:col-span-6"
         >
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl group">
-            <img
-              alt="Professional Lab Environment"
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvZA_lhhJ9JVBlQBBb00G2I76IoyOlh3mtZF1FEpAOn2dJlrTjAFxnR7BsbOLYChYd46EiD61Yck0G42t75kAevuMcm_5_bFh1WtJd0HErCQNJkQVxdmpX-qVBn7a4d9dbJ2JZZGJnBvbR-70vJfstNc22_6Jza5rd83S7IcNlbpXED1AL0ypM5Mt1cQfSmNauQo3xM_M0X7dFQU8fwP1GpjdLk5R8ZLFVzDIcYIWpnTzWehpT_Np_sQ9H_L-PWwzNu7KKVXyYvSs9"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-          </div>
+          <div className="bg-white rounded-[2rem] border border-primary/10 shadow-[0_20px_80px_rgba(0,0,0,0.08)] overflow-hidden">
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="absolute -bottom-8 -left-8 glass-card p-8 rounded-2xl shadow-2xl border border-white/50 max-w-xs"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-secondary/10 rounded-xl">
-                <FlaskConical className="w-8 h-8 text-secondary" />
-              </div>
-              <div>
-                <p className="text-2xl font-black text-on-surface">3,000+</p>
-                <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest leading-none">Formulations Developed</p>
-              </div>
+            {/* TOP BAR */}
+            <div className="flex gap-3 px-10 pt-8">
+              <div className="h-2 w-24 rounded-full bg-primary"></div>
+              <div className="h-2 w-16 rounded-full bg-primary/20"></div>
+              <div className="h-2 w-12 rounded-full bg-primary/10"></div>
             </div>
-            <p className="text-sm text-on-surface-variant leading-relaxed">Advanced R&D capabilities with proven, market-ready formulations.</p>
-          </motion.div>
+
+            <div className="p-10 lg:p-12">
+
+              <div className="mb-10">
+                <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs block mb-4">
+                  Get Manufacturing Quote
+                </span>
+
+                <h2 className="text-4xl font-extrabold text-on-surface leading-tight mb-4">
+                  Request Your Custom Proposal
+                </h2>
+
+                <p className="text-on-surface-variant leading-relaxed">
+                  Share your requirements and our business team will contact you within 24 hours.
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-7">
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant px-1">
+                      Full Name
+                    </label>
+
+                    <input
+                      required
+                      type="text"
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          name: e.target.value,
+                        })
+                      }
+                      className="w-full bg-surface-container-low border border-outline-variant/20 rounded-2xl p-4 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant px-1">
+                      Business Email
+                    </label>
+
+                    <input
+                      required
+                      type="email"
+                      placeholder="example@company.com"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          email: e.target.value,
+                        })
+                      }
+                      className="w-full bg-surface-container-low border border-outline-variant/20 rounded-2xl p-4 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant px-1">
+                      Phone Number
+                    </label>
+
+                    <input
+                      required
+                      type="tel"
+                      placeholder="+91 99999 99999"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          phone: e.target.value,
+                        })
+                      }
+                      className="w-full bg-surface-container-low border border-outline-variant/20 rounded-2xl p-4 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant px-1">
+                      Production Category
+                    </label>
+
+                    <select
+                      value={formData.category}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          category: e.target.value,
+                        })
+                      }
+                      className="w-full bg-surface-container-low border border-outline-variant/20 rounded-2xl p-4 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium appearance-none"
+                    >
+                      <option>
+                        Pharmaceuticals (Tablets/Caps)
+                      </option>
+
+                      <option>
+                        Herbal & Ayurvedic
+                      </option>
+
+                      <option>
+                        Derma & Skincare
+                      </option>
+
+                      <option>
+                        Nutraceuticals
+                      </option>
+
+                      <option>
+                        Third Party Manufacturing Inquiry
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant px-1">
+                    Product Requirements
+                  </label>
+
+                  <textarea
+                    required
+                    rows={5}
+                    placeholder="Describe your product specifications, packaging requirements, batch size, formulations etc."
+                    value={formData.details}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        details: e.target.value,
+                      })
+                    }
+                    className="w-full bg-surface-container-low border border-outline-variant/20 rounded-2xl p-4 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary text-white py-5 rounded-2xl font-bold text-lg uppercase tracking-widest hover:bg-secondary transition-all shadow-xl shadow-primary/20 hover:shadow-secondary/20 active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-3"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Clock className="w-5 h-5 animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      Generate My Quote
+                      <ArrowRight className="w-5 h-5" />
+                    </>
+                  )}
+                </button>
+
+                <p className="text-center text-[10px] text-on-surface-variant uppercase tracking-widest opacity-60">
+                  Confidentiality assured by our ISO protocols
+                </p>
+
+              </form>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
@@ -232,22 +450,22 @@ const FranchiseSection = () => {
 
         <div className="max-w-5xl mx-auto text-center">
           <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">
-            PCD Pharma Franchise
+            Third Party Manufacturing
           </span>
 
           <h2 className="text-4xl md:text-5xl font-extrabold text-on-surface mb-8 leading-tight">
-            Zoic Biotech - India’s Leading Cosmetic & Nutraceutical PCD Pharma Franchise
+            Zoic Biotech - India’s Leading Cosmetic & Nutraceutical Third Party Manufacturing
           </h2>
 
           <p className="text-lg text-on-surface-variant leading-relaxed font-light">
-            Zoic Biotech offers profitable business opportunities in PCD Pharma Franchise,
-            Nutraceutical PCD Pharma Franchise, and Cosmetic PCD Pharma Franchise across India.
+            Zoic Biotech offers profitable business opportunities in Third Party Manufacturing,
+            Nutraceutical Third Party Manufacturing, and Cosmetic Third Party Manufacturing across India.
             Our product portfolio includes pharmaceutical formulations, wellness supplements,
             nutraceutical products, herbal products, skincare, personal care, and cosmetic products.
 
-            With monopoly rights, promotional support, timely delivery, and quality-focused manufacturing,
+            With timely delivery, and quality-focused manufacturing,
             Zoic Biotech helps pharma distributors, medical representatives, wholesalers,
-            and entrepreneurs grow their own franchise business.
+            and entrepreneurs grow their own business.
           </p>
         </div>
 
@@ -301,7 +519,7 @@ const ManufacturingCapabilities = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="max-w-2xl">
             <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Manufacturing Excellence</span>
-            <h2 className="font-headline text-4xl font-extrabold text-on-surface leading-tight">Wide Range of Pharma Products for PCD Pharma Franchise</h2>
+            <h2 className="font-headline text-4xl font-extrabold text-on-surface leading-tight">Wide Range of Pharma Products for Third Party Manufacturing</h2>
           </div>
           <div className="h-px flex-grow bg-outline-variant/30 hidden md:block mx-12 mb-6"></div>
         </div>
@@ -341,7 +559,7 @@ const ManufacturingCapabilities = () => {
           >
             <div>
               <h3 className="font-headline text-3xl font-extrabold mb-6">Partner With Us</h3>
-              <p className="opacity-80 mb-8 font-light text-lg">Looking for PCD Pharma Franchise, Third-Party Manufacturing, or Private Labeling?
+              <p className="opacity-80 mb-8 font-light text-lg">Looking for Third-Party Manufacturing, or Private Labeling?
                 We provide complete support from product selection to manufacturing and delivery.</p>
             </div>
             <a
@@ -361,7 +579,6 @@ const WhyChooseZoic = () => {
   const points = [
     "WHO-GMP Certified",
     "ISO Certified Company",
-    "Monopoly Rights Available",
     "500+ Pharma Products",
     "Fast Delivery Network",
     "High Profit Margins"
@@ -378,9 +595,8 @@ const WhyChooseZoic = () => {
 
           <p className="text-lg text-on-surface-variant leading-relaxed">
             Zoic Biotech is a rapidly growing pharmaceutical company offering
-            high-quality Cosmetic & Nutraceutical PCD Pharma Franchise opportunities across India.
-            We provide WHO-GMP certified products, monopoly-based business opportunities,
-            and complete promotional support to help our franchise partners grow successfully.
+            high-quality Cosmetic & Nutraceutical Third Party Manufacturing opportunities across India.
+            We provide WHO-GMP certified products, to help our partners grow successfully.
           </p>
         </div>
 
@@ -407,14 +623,14 @@ const PharmaBusinessSection = () => {
       <div className="max-w-screen-xl mx-auto px-6 text-center">
 
         <h2 className="text-4xl md:text-5xl font-extrabold mb-10">
-          Start a Profitable Pharma Franchise Business
+          Start a Profitable Pharma Business
         </h2>
 
         <p className="text-lg text-white/80 leading-relaxed max-w-5xl mx-auto mb-14">
           The Indian pharmaceutical market is witnessing strong growth due to rising healthcare awareness,
           increasing medicine demand, and expanding rural healthcare access.
 
-          The PCD Pharma Franchise model has become one of the most profitable and low-risk business opportunities in India.
+          The Third Party Manufacturing model has become one of the most profitable and low-risk business opportunities in India.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 mb-14">
@@ -528,19 +744,16 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Vikram Singh",
-      role: "Franchise Partner, Lukhnow",
       text: "Partnering with Zoic Biotech gave us the confidence to scale quickly. Their product quality and consistent supply helped us establish a strong presence in our region within a short time.",
       image: "/user.jpg"
     },
     {
       name: "Naveen Reddy",
-      role: "PCD Distributor, Hyderabad",
       text: "Their manufacturing process is highly professional and transparent. We’ve been able to expand our product portfolio without worrying about quality or delays.",
       image: "/user.jpg"
     },
     {
       name: "Karthik Iyer",
-      role: "Area Manager, Chennai",
       text: "Zoic’s team understands the business side as well as the technical side. From product selection to packaging support, everything is aligned to help us grow faster.",
       image: "/user.jpg"
     }
@@ -564,10 +777,10 @@ const Testimonials = () => {
               </div>
               <p className="text-on-surface italic mb-10 text-lg leading-relaxed">"{t.text}"</p>
               <div className="flex items-center gap-5">
-                <img src={t.image} alt={t.name} className="w-14 h-14 rounded-full object-cover border-2 border-primary/10" referrerPolicy="no-referrer" />
+                {/* <img src={t.image} alt={t.name} className="w-14 h-14 rounded-full object-cover border-2 border-primary/10" referrerPolicy="no-referrer" /> */}
                 <div>
                   <p className="font-bold text-on-surface">{t.name}</p>
-                  <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">{t.role}</p>
+                  {/* <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">{t.role}</p> */}
                 </div>
               </div>
             </motion.div>
@@ -703,7 +916,7 @@ const ContactForm = () => {
                     <option>Herbal & Ayurvedic</option>
                     <option>Derma & Skincare</option>
                     <option>Nutraceuticals</option>
-                    <option>PCD Franchise Inquiry</option>
+                    <option>Third Party Manufacturing Inquiry</option>
                   </select>
                 </div>
               </div>
@@ -792,9 +1005,9 @@ const Footer = () => {
           <h4 className="font-headline font-bold text-sm uppercase tracking-widest mb-8 text-secondary">Manufacturing</h4>
           <ul className="space-y-4 text-sm text-white/60 font-light">
             <li><a className="hover:text-secondary transition-colors" href="#">Third Party Manufacturing</a></li>
-            <li><a className="hover:text-secondary transition-colors" href="#">PCD Pharma Franchise</a></li>
             <li><a className="hover:text-secondary transition-colors" href="#">Contract Manufacturing</a></li>
             <li><a className="hover:text-secondary transition-colors" href="#">Private Labeling</a></li>
+            <li><a className="hover:text-secondary transition-colors" href="#">Affordable MOQs</a></li>
           </ul>
         </div>
         <div>
